@@ -26,29 +26,84 @@
       letter-spacing: 1px;
       font-weight: 600;
       text-transform: uppercase;
+      font-style: italic;
+      font-family: Georgia, 'Times New Roman', Times, serif;
     }
-
 
     .nav {
   display: flex;
-  justify-content: center;
-  gap: 25px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   background-color: #4a6f8a;
-  padding: 15px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 14px 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.nav a {
-  color:white ;
-  font-weight: bold;
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+.brand-name {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
-.nav a:hover {
-  color:#152c3a;
+.nav-links a:hover {
+  color: #d1e0ee;
 }
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px 0;
+  }
+}
+
 
     .product-container {
       display: flex;
@@ -329,19 +384,23 @@
   </style>
 </head>
 <body>
-      <div class="header">
-        <h1> whatchify </h1>
+  <div class="header">
+    <h1>WHATCHIFY</h1>
+  </div>
+  <div class="nav">
+    <div class="nav-left">
+      <img src="watchify.jpg" alt="Whatchify Logo" class="logo" />
+      <span class="brand-name">Whatchify</span>
     </div>
-    <div class="nav">
-        <a href="index.html">Home</a>
-        
-        <a href="hotseller.html">  Our Products</a>
-        <a href="exclusive.html">Our Exclusive</a>
-       
-        <a href="aboutus.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="hotseller.html">Our Products</a>
+      <a href="exlucive.html">Our Exclusive</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
     </div>
-    
+  </div>
   <h1 class="artistic-title">Artistic Collection</h1>
   <div class="product-container artistic-section">
     <!-- 3 Artistic Items -->
@@ -465,7 +524,7 @@
       <!-- Left Column -->
       <div class="footer-left">
         <div class="footer-logo">
-          <img src="w.jpg" alt="Company Logo" />
+          <img src="watchify.jpg" alt="Company Logo" />
         </div>
         <p class="footer-description">
           We are a leading company in the industry, committed to providing top-notch products and services to our customers.
@@ -511,4 +570,11 @@
       </div>
     </div>
   </footer>
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
   
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
